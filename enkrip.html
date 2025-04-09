@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Encrypt Flag</title>
+</head>
+<body>
+  <h2>Encrypt Your Flag</h2>
+  <input type="text" id="flag" placeholder="FLAG{...}" />
+  <input type="text" id="key" placeholder="Secret Key" />
+  <button onclick="encryptFlag()">Encrypt</button>
+  <p>Encrypted Flag:</p>
+  <pre id="result"></pre>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script>
+    function encryptFlag() {
+      const flag = document.getElementById("flag").value;
+      const key = document.getElementById("key").value;
+      const encrypted = CryptoJS.AES.encrypt(flag, key).toString();
+      document.getElementById("result").innerText = encrypted;
+    }
+  </script>
+</body>
+</html>
